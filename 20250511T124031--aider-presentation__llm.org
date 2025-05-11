@@ -1,0 +1,194 @@
+
+#+title:      Aider - a pair programming assistant
+#+date:       [2025-05-11 Sun 12:40]
+#+filetags:   :llm:
+#+identifier: 20250511T124031
+
+[[./aider_presentation/aider.png]]
+
+* Currently one of most popular open source pair progamming tools
+
+[[./aider_presentation/aider_github.png]]
+https://aider.chat/
+
+* Aider leaderboard for coding
+
+[[./aider_presentation/ai_leaderboard.png]]
+https://aider.chat/docs/leaderboards/
+
+* Comparable with: Cursor, Windsurf
+
+[[./aider_presentation/cursor.png]]
+https://www.cursor.com/
+
+
+[[./aider_presentation/windsurf.png]]
+https://windsurf.com/
+
+* ... or Copilot
+
+[[./aider_presentation/copilot.png]]
+https://github.com/features/copilot
+
+* ... or Pycharm AI Assistant
+
+[[./aider_presentation/jetbrains.png]]
+
+* Landscape is evolving with many different tools
+
+[[./aider_presentation/ai_landscape.png]]
+
+| Level | High-level Approaches      | Example Popular Products             |
+|-------+----------------------------+--------------------------------------|
+| L1    | Code-level Completion      | GitHub Copilot, Tabby                |
+| L2    | Task-level Code Generation | aider, cline, 16x Prompt             |
+|       | Ticket to Code             | ChatGPT, Claude                      |
+|       | IDE with Chat              | Cursor, Continue, PearAI, Windsurf   |
+| L3    | Project-level Generation   | Codegen, Sweep                       |
+|       | Ticket to PR               | Pythagora, Plandex                   |
+|       | Prompt to UI v0            |                                      |
+| L4    | PRD to Production          | Marblism, bolt.new, Trickle, Lovable |
+|       | AI Software Engineer       | Devin, Genie, Engine, devlo, Gru     |
+| L5    | AI Development Teams       | AutoDev, MetaGPT, MGX                |
+Source: https://prompt.16x.engineer/blog/ai-coding-l1-l5
+
+* Differences to other tools
+
+- CLI tool
+- open-source (python package)
+- Can be used ~with any llm~ (i.e. local or provided)
+- Simple tool, i.e. more control
+
+* Benefits
+
+- reads only codebase, can control which code is sent to gpt
+- keep code private when running local models
+- as CLI can be used in all IDEs
+- transparent LLM costs
+- optimize by splitting research/coding models
+- ~readily available~
+
+* Drawbacks
+
+- other IDEs are easier to use
+- CLI vs. GUI
+- configuration needed
+
+* IDE integration
+In CLI via watch-mode
+
+[[./aider_presentation/watch_file.png]]
+
+Via Plugins:
+- vs code
+- vim
+- emacs
+
+*  Example: Aidermacs for emacs
+:PROPERTIES:
+:ORG-IMAGE-ACTUAL-WIDTH: 600
+:END:
+[[./aider_presentation/aidermacs.png]]
+
+*  What I use aider for
+
+- questions about objects
+- refactor functions
+- write unit tests
+- write docstrings
+- create examples for data classes
+- plan things
+- write git commits
+
+* Different modes for either coding or questioning
+
+1. */code mode:* default, make direct changes
+2. */ask mode:* no code change
+3. */architecture mode:* high level code discussion for planning/brainstorming
+
+* Advantages to RED/Azure Playground
+
+- No copying of code into chat interface
+- Automatic application of code changes
+- Perform more complex refactoring code changes across files
+- Programmable: agent to do tasks (file creation, git commits, etc.)
+
+_In total more immersive, integrated workflow_
+
+* Repository map of project as context
+
+aider initializes a =repository map= of (git) repository have an understanding of the code base
+
+=aider/coders/base_coder.py:=
+#+begin_src python
+⋮...
+│class Coder:
+│    abs_fnames = None
+⋮...
+│    @classmethod
+│    def create(
+│        self,
+│        main_model,
+│        edit_format,
+│        io,
+│        skip_model_availabily_check=False,
+│        **kwargs,
+⋮...
+│    def abs_root_path(self, path):
+⋮...
+│    def run(self, with_message=None):
+⋮...
+#+end_src
+
+=aider/commands.py:=
+#+begin_src python
+⋮...
+│class Commands:
+│    voice = None
+│
+⋮...
+│    def get_commands(self):
+⋮...
+│    def get_command_completions(self, cmd_name, partial):
+⋮...
+│    def run(self, inp):
+⋮...
+
+#+end_src
+
+* General tips for AI pair programming
+
+- Add only necessary files to context
+- Use type notations
+- Use (data) classes
+- Split code into smaller files/smaller functions
+- Define conventions for consistency
+
+More tips by aider team:
+https://aider.chat/docs/usage/tips.html
+
+*Generally good coding practices apply*
+
+* ... but also
+
+- Don't blindly trust the AI
+-
+
+* Demo
+
+- [ ] show in vs code with watch mode
+- [ ] token/cost estimation
+- [ ] make change with git commit
+- [ ] revert change
+- [ ] refactor function
+- [ ] add docstring to function
+- [ ] optional web interface
+
+* Appendix
+#+begin_src emacs-lisp :tangle yes
+(setq-local org-image-actual-width 1200)
+
+#+end_src
+
+#+RESULTS:
+:
