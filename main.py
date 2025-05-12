@@ -35,8 +35,38 @@ class Person:
         self.skills.append(skill)
 
 
+@dataclass
+class Programmer(Person):
+    """
+    A dataclass representing a programmer, inheriting from Person.
+
+    :param name: The programmer's full name
+    :param age: The programmer's age in years
+    :param email: The programmer's email address
+    :param languages: List of programming languages the programmer knows
+    :param skills: List of skills the programmer has
+    :param address: The programmer's address
+    """
+    languages: List[str] = None
+
+    def __post_init__(self):
+        """Initialize default values after the main initialization."""
+        super().__post_init__()
+        if self.languages is None:
+            self.languages = []
+
+    def add_language(self, language: str) -> None:
+        """
+        Add a new programming language to the programmer's languages list.
+
+        :param language: The programming language to add
+        :return: None
+        """
+        self.languages.append(language)
+
+
 def main():
-    """Main function to demonstrate the Person dataclass."""
+    """Main function to demonstrate the Person and Programmer dataclasses."""
     # Create a person instance
     developer = Person(
         name="Jane Doe",
@@ -62,6 +92,20 @@ def main():
     manager.add_skill("Leadership")
     print(f"Manager: {manager}")
     print(f"Skills: {', '.join(manager.skills)}")
+
+    # Add a programmer instance
+    programmer = Programmer(
+        name="John Smith",
+        age=32,
+        email="john.smith@example.com",
+        skills=["Problem Solving", "Algorithms"],
+        languages=["Python", "Java"]
+    )
+    programmer.add_skill("System Design")
+    programmer.add_language("C++")
+    print(f"Programmer: {programmer}")
+    print(f"Skills: {', '.join(programmer.skills)}")
+    print(f"Languages: {', '.join(programmer.languages)}")
     
     return 1
 
