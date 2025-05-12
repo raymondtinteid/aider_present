@@ -52,6 +52,17 @@ def main():
     print(f"Developer: {developer}")
     print(f"Skills: {', '.join(developer.skills)}")
     
+    # Add another person instance
+    manager = Person(
+        name="Alice Smith",
+        age=35,
+        email="alice.smith@example.com",
+        skills=["Management", "Communication"]
+    )
+    manager.add_skill("Leadership")
+    print(f"Manager: {manager}")
+    print(f"Skills: {', '.join(manager.skills)}")
+    
     return 1
 
 
