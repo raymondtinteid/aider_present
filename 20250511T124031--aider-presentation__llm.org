@@ -6,7 +6,7 @@
 
 [[./aider_presentation/aider.png]]
 
-* Currently one of most popular open source pair progamming tools
+* Currently one of most popular open source pair progamming tools 🧰
 
 [[./aider_presentation/aider_github.png]]
 https://aider.chat/
@@ -34,7 +34,7 @@ https://github.com/features/copilot
 
 [[./aider_presentation/jetbrains.png]]
 
-* Landscape is evolving with many different tools
+* Landscape is evolving with many different tools 🌄
 
 [[./aider_presentation/ai_landscape.png]]
 
@@ -59,7 +59,7 @@ Source: https://prompt.16x.engineer/blog/ai-coding-l1-l5
 - Can be used ~with any llm~ (i.e. local or provided)
 - Simple tool, i.e. more control
 
-* Benefits
+* Benefits 🚀
 
 - reads only codebase, can control which code is sent to gpt
 - keep code private when running local models
@@ -68,13 +68,13 @@ Source: https://prompt.16x.engineer/blog/ai-coding-l1-l5
 - optimize by splitting research/coding models
 - ~readily available~
 
-* Drawbacks
+* Drawbacks 🤷
 
 - other IDEs are easier to use
 - CLI vs. GUI
 - configuration needed
 
-* IDE integration
+* IDE integration 🤖
 In CLI via watch-mode
 
 [[./aider_presentation/watch_file.png]]
@@ -82,7 +82,7 @@ In CLI via watch-mode
 Via Plugins:
 - vs code
 - vim
-- emacs
+- emacs ⭐
 
 *  Example: Aidermacs for emacs
 :PROPERTIES:
@@ -90,7 +90,7 @@ Via Plugins:
 :END:
 [[./aider_presentation/aidermacs.png]]
 
-*  What I use aider for
+*  What I use aider for 🏇
 
 - questions about objects
 - refactor functions
@@ -100,11 +100,16 @@ Via Plugins:
 - plan things
 - write git commits
 
-* Different modes for either coding or questioning
+* Different modes for either coding or questioning 🧵
 
 1. */code mode:* default, make direct changes
 2. */ask mode:* no code change
 3. */architecture mode:* high level code discussion for planning/brainstorming
+
+* Features I'd wished to have 🦾
+- Documentation indexing
+- MCP server integration
+- +Autocompletion via tab+
 
 * Advantages to RED/Azure Playground
 
@@ -115,7 +120,7 @@ Via Plugins:
 
 _In total more immersive, integrated workflow_
 
-* Repository map of project as context
+* Repository map of project as context 🗺
 
 aider initializes a =repository map= of (git) repository have an understanding of the code base
 
