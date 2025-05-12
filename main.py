@@ -65,8 +65,27 @@ class Programmer(Person):
         self.languages.append(language)
 
 
+@dataclass
+class Boss(Person):
+    """
+    A dataclass representing a boss, inheriting from Person.
+
+    :param name: The boss's full name
+    :param age: The boss's age in years
+    :param email: The boss's email address
+    :param skills: List of skills the boss has
+    :param address: The boss's address
+    :param language: The boss's primary language (default: 'powerpoint')
+    """
+    language: str = "powerpoint"
+
+    def __post_init__(self):
+        """Initialize default values after the main initialization."""
+        super().__post_init__()
+
+
 def main():
-    """Main function to demonstrate the Person and Programmer dataclasses."""
+    """Main function to demonstrate the Person, Programmer, and Boss dataclasses."""
     # Create a person instance
     developer = Person(
         name="Jane Doe",
@@ -106,6 +125,18 @@ def main():
     print(f"Programmer: {programmer}")
     print(f"Skills: {', '.join(programmer.skills)}")
     print(f"Languages: {', '.join(programmer.languages)}")
+
+    # Add a boss instance
+    boss = Boss(
+        name="Bob Bossman",
+        age=45,
+        email="bob.bossman@example.com",
+        skills=["Leadership", "Strategy"]
+    )
+    boss.add_skill("Vision")
+    print(f"Boss: {boss}")
+    print(f"Skills: {', '.join(boss.skills)}")
+    print(f"Language: {boss.language}")
     
     return 1
 
